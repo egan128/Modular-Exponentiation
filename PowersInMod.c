@@ -7,9 +7,9 @@ Purpose: Calculates powers of any number in any modular number system
 #include <stdio.h>
 #include <stdlib.h>
 
-int binary(int pow, int base, int mod);
+void binary(int pow, int base, int mod);
 long powerOf(long base, long exponent);
-int recAlg(int arr[], int base, int exponent, int mod, int size);
+int format(int arr[], int base, int exponent, int mod, int size);
 long modCalc(long num, long mod);
 int modCalcRec(long base, long exponent, long numInMod, long mod, long pow);
 void main()
@@ -57,7 +57,7 @@ long modCalc(long num, long mod)
     ans = num - (num / mod) * mod;
     return ans;
 }
-int recAlg(int arr[], int base, int exponent, int mod, int size)
+int format(int arr[], int base, int exponent, int mod, int size)//collects data from recursive algorithm(modCalcRec), runs algorithm for each item in inputted array (arr[]), binaryResults from binary function 
 {
     int i = 0;
     int j = 0;
@@ -76,7 +76,7 @@ int recAlg(int arr[], int base, int exponent, int mod, int size)
     }
     printf("\nThe Answer is %d", modCalc(ans, mod));
 }
-int binary(int pow, int base, int mod)// converts decimal to binary and adds each digit to an array
+void binary(int pow, int base, int mod)// converts decimal to binary and adds each digit to an array
 {
 
     int i = 0;
@@ -112,5 +112,5 @@ int binary(int pow, int base, int mod)// converts decimal to binary and adds eac
             j++;
         }
     }
-    recAlg(binaryResults, base, store, mod, oneCounter); // parse the new array, base, exponent, mod, and array length to next function
+    format(binaryResults, base, store, mod, oneCounter); // parse the new array, base, exponent, mod, and array length to next function
 };
